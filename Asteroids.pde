@@ -1,11 +1,13 @@
 boolean wkey, skey, akey, dkey, spacekey;
 ship myship;
+ufo myufo;
 int mode;
 final int intro =1;
 final int game =2;
 final int pause =3;
 final int gameover =4;
 ArrayList<gameobject> myobjects;
+ArrayList<ufobullet> myufobullets;
 PFont aremat;
 PImage[]gif;
 int frames;
@@ -14,6 +16,7 @@ int framenum;
 int health;
 int asteroidsnum;
 String leadingzeroes = "0";
+int timer;
 
 void setup() {
   size(800, 600);
@@ -21,11 +24,14 @@ void setup() {
   imageMode(CENTER);
   rectMode(CENTER);
   myship=new ship();
+  myufo=new ufo();
   myobjects= new ArrayList<gameobject>();
   myobjects.add(myship);
   myobjects.add(new asteroid());
   myobjects.add(new asteroid());
   myobjects.add(new asteroid());
+   myobjects.add(myufo);
+   myufobullets= new ArrayList<ufobullet>();
   aremat=createFont("aremat font.ttf",100);
   textFont(aremat);
 //  frames=30;

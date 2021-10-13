@@ -6,7 +6,7 @@ void game() {
   if (health<=0) {
     mode=gameover;
   }
-if (asteroidsnum>9)mode=gameover;
+if (asteroidsnum>50)mode=gameover;
   int i=0;
   while (i<myobjects.size()) {
     gameobject myobj = myobjects.get(i);
@@ -17,6 +17,21 @@ if (asteroidsnum>9)mode=gameover;
     } else {
       i++;
     }
+
+    
+    int ui=0;
+    while(ui<myufobullets.size()){
+      ufobullet ub =myufobullets.get(ui);
+      ub.show();
+      ub.act();
+    }if (myufobullets.lives==0) {
+      myobjects.remove(i);
+    } else {
+      ui++;
+    }myobjects.remove(i);
+              timer++;
+    if (timer>300) timer=0;
+    if (timer== 150) myufobullets.add(new ufobullet());
   }
 
   //pause button
