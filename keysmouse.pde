@@ -2,6 +2,9 @@ void keyPressed() {
   if (key=='w' ||key=='W'){
     wkey=true;
   myobjects.add(new fire());
+  myobjects.add(new fire());
+  myobjects.add(new fire());
+  myobjects.add(new fire());
   }
   if (key=='s'||key=='S')skey=true;
   if (key=='a' ||key=='A')akey=true;

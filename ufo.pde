@@ -8,14 +8,36 @@
 //u will need to use setMag to slow down the velocity
 //look at asteroids second constructor for help
 
+//generate a number from 0-3 and assign them a value of a side, 
+
 class ufo extends gameobject {
   PVector direction; 
+  int r;
 
   ufo() {
     location=new PVector(width/2, height/2);
-    velocity = new PVector(1, 0);
     lives=1;
-
+    r=int(random(0, 3));
+    if (r==0) {
+    location.x=width/2;
+    location.y=height;
+    velocity = new PVector(0, -1);
+    }
+    if (r==1) {
+    location.x=width/2;
+    location.y=0;
+    velocity = new PVector(0, 1);
+    }
+    if (r==2) {
+    location.x=width;
+    location.y=height/2;
+    velocity = new PVector(-1, 0);
+    }
+    if (r==3) {
+    location.x=0;
+    location.y=height/2;
+    velocity = new PVector(1, 0);
+    }
   }
   void show() {
     ellipse(location.x, location.y, 30, 10);
@@ -32,5 +54,12 @@ class ufo extends gameobject {
     //  }
     // }
     //}
+    super.act();
+    timer++;
+    if (timer>100) timer=0;
+    if (timer== 30) myufobullets.add(new ufobullet());
+    if (location.x>width||location.x<0) {
+      lives=0;
+    }
   }
 }
